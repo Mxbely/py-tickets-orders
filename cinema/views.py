@@ -79,7 +79,6 @@ class MovieSessionViewSet(viewsets.ModelViewSet):
         if date:
             queryset = queryset.filter(show_time__date=date)
         if movie_id:
-            # movie = [int(str_id) for str_id in movie.split(",")]
             queryset = queryset.filter(movie_id=movie_id)
         return queryset.distinct()
 
