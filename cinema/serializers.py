@@ -1,4 +1,6 @@
 from rest_framework import serializers
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.generics import ListAPIView
 
 from cinema.models import (
     Genre,
@@ -123,3 +125,12 @@ class OrderSerializer(serializers.ModelSerializer):
 
 class OrderDetailSerializer(OrderSerializer):
     tickets = TicketSerializer(many=True, read_only=True)
+
+
+# class OrderListView(ListAPIView):
+#     serializer_class = OrderSerializer
+#     permission_classes = [IsAuthenticated]
+
+#     def get_queryset(self):
+#         user = self.request.user
+#         return Order.objects.filter(user=user)
